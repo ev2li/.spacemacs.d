@@ -1,0 +1,5 @@
+(setq-default evil-escape-key-sequence "jk")
+(setq-default evil-escape-delay 0.2)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
