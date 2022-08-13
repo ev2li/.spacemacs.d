@@ -39,7 +39,10 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      markdown
-     auto-completion
+     (auto-completion :variables auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-tab-key-behavior 'cycle
+                      :disabled-for org markdown)
      better-defaults
      emacs-lisp
      ;; git
@@ -55,6 +58,11 @@ This function should only modify configuration layer settings."
      ;; markdown
      multiple-cursors
      ;; org
+     (org :variables org-want-todo-bindings t
+          org-enable-hugo-support t
+          org-enable-valign t
+          org-enable-org-journal-support t
+          org-enable-roam-support nil)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
