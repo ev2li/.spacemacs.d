@@ -3,3 +3,5 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+(setq auto-save-default nil)
+(setq c-basic-offset 4)
