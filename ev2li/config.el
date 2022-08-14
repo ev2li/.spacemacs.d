@@ -6,3 +6,6 @@
 (setq auto-save-default nil)
 (setq c-basic-offset 4)
 (setq evil-want-fine-undo t)
+(setq byte-compile-warnings '(cl-functions))
+(setq inhibit-compacting-font-caches t)
+(setq spacemacs-show-trailing-whitespace nil)

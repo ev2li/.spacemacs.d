@@ -60,7 +60,6 @@ This function should only modify configuration layer settings."
           magit-revision-show-gravatars nil)
      helm
      ;; lsp
-     ;; markdown
      multiple-cursors
      ;; org
      (org :variables org-want-todo-bindings t
@@ -78,6 +77,8 @@ This function should only modify configuration layer settings."
                 spell-checking-enable-by-default nil)
      ;; version-control
      treemacs
+	 semantic
+	 (go :variables go-tab-width 4)
      ev2li
      )
 
@@ -603,6 +604,7 @@ This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
+ '(global-vi-tilde-fringe-mode nil)
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
