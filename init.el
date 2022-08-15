@@ -46,6 +46,7 @@ This function should only modify configuration layer settings."
      better-defaults
      emacs-lisp
      tabnine
+     ranger
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-backend 'lsp-ccls
