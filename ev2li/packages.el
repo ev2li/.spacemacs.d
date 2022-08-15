@@ -1,5 +1,5 @@
 (defconst ev2li-packages
-  '(company)
+  '(company))
   
 ;; 配置包
 ;; use-package 装载包
@@ -10,7 +10,6 @@
 ;; :disabled t 禁用
 (defun  ev2li/post-init-company()
   (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0)
-  )
+  (setq company-idle-delay 0))
 
 
