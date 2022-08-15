@@ -10,3 +10,7 @@
 (setq inhibit-compacting-font-caches t)
 (setq projectile-enable-caching t) 
 (setq spacemacs-show-trailing-whitespace nil)
+
+(define-key evil-insert-state-map (kbd "C-y") #'yank)
+(define-key evil-insert-state-map (kbd "M-w") #'kill-ring-save)
+
