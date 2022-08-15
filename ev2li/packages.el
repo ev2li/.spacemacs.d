@@ -9,6 +9,8 @@
 ;; :defer t 自动推迟加载，在空闲时间加载
 ;; :disabled t 禁用
 (defun  ev2li/post-init-company()
-  (setq company-minimum-prefix-length 1))
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0)
+  )
 
 
