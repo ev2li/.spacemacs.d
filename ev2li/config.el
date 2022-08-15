@@ -10,4 +10,3 @@
 (setq inhibit-compacting-font-caches t)
 (setq projectile-enable-caching t) 
 (setq spacemacs-show-trailing-whitespace nil)
-(setq auto-save-default nil)
