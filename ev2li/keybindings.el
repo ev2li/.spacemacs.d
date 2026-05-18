@@ -1,1 +1,1 @@
-(global-set-key (kbd "C-s") 'isearch-forward)
+(global-set-key (kbd "C-s") 'swiper)
