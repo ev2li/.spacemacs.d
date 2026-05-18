@@ -11,5 +11,3 @@
 (defun  ev2li/post-init-company()
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
-
-
