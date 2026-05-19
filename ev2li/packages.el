@@ -2,7 +2,7 @@
 ;;
 ;; Copyright (c) 2012-2025 Sylvain Benner & Contributors
 ;;
-;; Author: 张李 <zhangli@192.168.0.100>
+;; Author: ev2li <ev2li@192.168.0.100>
 ;; URL: https://github.com/syl20bnr/spacemacs
 ;;
 ;; This file is not part of GNU Emacs.
@@ -41,7 +41,8 @@
 ;;; Code:
 
 (defconst ev2li-packages
-  '()
+  '(
+  )
   "The list of Lisp packages required by the ev2li layer.
 
 Each entry is either:

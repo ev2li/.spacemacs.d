@@ -1,4 +1,3 @@
-(global-set-key (kbd "C-s") 'swiper)
 (define-key 'help-command "A" 'apropos)
 (define-key 'help-command (kbd "C-f") 'find-function)
 (define-key 'help-command (kbd "C-k") 'find-function-on-key)
