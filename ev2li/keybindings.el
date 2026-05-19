@@ -1,1 +1,10 @@
 (global-set-key (kbd "C-s") 'swiper)
+(define-key 'help-command "A" 'apropos)
+(define-key 'help-command (kbd "C-f") 'find-function)
+(define-key 'help-command (kbd "C-k") 'find-function-on-key)
+(define-key 'help-command (kbd "C-v") 'find-variable)
+(define-key 'help-command (kbd "C-l") 'find-library)
+(define-key 'help-command (kbd "C-i") 'info-display-manual)
+
+(global-set-key (kbd "C-s-k") 'move-text-line-up)
+(global-set-key (kbd "C-s-j") 'move-text-line-down)
