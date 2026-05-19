@@ -14,7 +14,6 @@
 
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
-
 ;; 禁用 undo-tree 自动保存历史文件 
 (with-eval-after-load 'undo-tree
   (setq undo-tree-auto-save-history nil)
