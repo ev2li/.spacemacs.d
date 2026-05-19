@@ -1,3 +1,5 @@
+(setq-default evil-escape-key-sequence "jk")
+(setq-default evil-escape-delay 0.2)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 ;;(setq indent-line-function 'insert-tab)
@@ -12,7 +14,7 @@
 
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
-;; 禁用 undo-tree 自动保存历史文件 
+;; 禁用 undo-tree 自动保存历史文件
 (with-eval-after-load 'undo-tree
   (setq undo-tree-auto-save-history nil)
   (setq undo-tree-history-directory-alist nil))
