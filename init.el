@@ -625,7 +625,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-;; 启动时自动应用透明度
+  ;; 启动时自动应用透明度
   (set-frame-parameter (selected-frame) 'alpha
                        (cons dotspacemacs-active-transparency
                              dotspacemacs-inactive-transparency))
