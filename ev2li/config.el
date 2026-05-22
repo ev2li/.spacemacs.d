@@ -22,3 +22,10 @@
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 ;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
+(setq
+ recentf-auto-cleanup 60
+ recentf-max-saved-items 50
+ recentf-exclude '("/tmp/" "/ssh:" "/sudo:" "/Trash/")
+ )
+;; 可选：屏蔽提示
+(setq recentf-save-hook (lambda () (message "")))
