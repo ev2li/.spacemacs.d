@@ -620,16 +620,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq warning-minimum-level :error)
   (setq evil-shift-round nil)
-
-  ;;(setq dotspacemacs-default-font '("FiraCode Nerd Font‌" :size 22.0 :weight normal :width normal))
-  ;; 2. 关闭 Spacemacs 自己的字体选择
-  ;; (setq dotspacemacs-enable-font-selection-on-startup nil)
-  ;; 3. 底层 Emacs 禁止字体对话框
-  ;; (setq inhibit-font-loading-dialogs t)
-  ;; (setq emacs-silent-font-load t)
-  ;; (setq frame-inhibit-implied-resize t)
-  ;; 4. 不要让它去读 X 资源（macOS 也会触发）
-  ;; (setq inhibit-x-resources t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -638,10 +628,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; (use-package treemacs-nerd-icons
-  ;;   :after treemacs
-  ;;   :config
-  ;; (treemacs-nerd-icons-mode 1))
   ;; 关联文件图标识别
   (use-package all-the-icons-dired
     :ensure t
@@ -664,21 +650,21 @@ before packages are loaded."
                              dotspacemacs-inactive-transparency))
   (setq rust-format-on-save t)
   ;;解决org表格里面中英文对齐的问题
-  ;; (when (configuration-layer/layer-usedp 'chinese)
-  ;;   (when (and (spacemacs/system-is-mac) window-system)
-  ;;     (spacemacs//set-monospaced-font "FiraCode Nerd Font‌" "Hiragino Sans GB" 22 22)))
+  (when (configuration-layer/layer-usedp 'chinese)
+    (when (and (spacemacs/system-is-mac) window-system)
+      (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 22 22)))
   (setq ispell-program-name "aspell")
   (setq ispell-dictionary "english")
   ;; Setting Chinese Font
-  ;; (when (and (spacemacs/system-is-mswindows) window-system)
-  ;;   (setq w32-pass-alt-to-system nil)
-  ;;   (setq w32-apps-modifier 'super)
-  ;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
-  ;;     (set-fontset-font (frame-parameter nil 'font)
-  ;;                       charset
-  ;;                       (font-spec :family "Microsoft Yahei" :size 22))))
+  (when (and (spacemacs/system-is-mswindows) window-system)
+    (setq w32-pass-alt-to-system nil)
+    (setq w32-apps-modifier 'super)
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset
+                        (font-spec :family "Microsoft Yahei" :size 22))))
   (spacemacs|add-company-backends :modes text-mode)
-  ;; (global-hungry-delete-mode t)
+  (global-hungry-delete-mode t)
   (spacemacs|diminish helm-gtags-mode)
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish which-key-mode)
