@@ -638,10 +638,10 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (use-package treemacs-nerd-icons
-    :after treemacs
-    :config
-    (treemacs-nerd-icons-mode 1))
+  ;; (use-package treemacs-nerd-icons
+  ;;   :after treemacs
+  ;;   :config
+  ;; (treemacs-nerd-icons-mode 1))
   ;; 关联文件图标识别
   (use-package all-the-icons-dired
     :ensure t
