@@ -29,3 +29,6 @@
  )
 ;; 可选：屏蔽提示
 (setq recentf-save-hook (lambda () (message "")))
+;; 方法1：完全禁止显示警告信息（包括 minibuffer 提示）
+(setq warning-minimum-level :error)
+(setq inhibit-warning-messages t)
