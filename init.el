@@ -58,7 +58,9 @@ This function should only modify configuration layer settings."
      ;; lsp
      ;; markdown
      multiple-cursors
-     lua
+     (lua :variables
+          lua-default-application "/usr/local/bin/lua"  ; 👈 这里写你的真实路径
+          lua-indent-level 4)                    ; 你要的缩进也能直接写
      (org :variables org-want-todo-bindings t
           org-enable-hugo-support t
           org-enable-valign t
@@ -68,7 +70,7 @@ This function should only modify configuration layer settings."
             shell-default-term-shell "/bin/zsh")
      ranger
      (rust :variables rust-backend 'racer)
-     search-engine     (rust :variables rust-backend 'racer)
+     search-engine
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -78,7 +80,7 @@ This function should only modify configuration layer settings."
      (syntax-checking :variables syntax-checking-enable-by-default nil
                       syntax-checking-enable-tooltips nil)
      (spell-checking :variables spell-checking-enable-by-default nil)
-     treemacs
+     (treemacs)
      (python :variables
              python-test-runner '(nose pytest)
              python-backend 'lsp
@@ -105,7 +107,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(swiper)
+   dotspacemacs-additional-packages '(all-the-icons-dired treemacs-nerd-icons)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -636,6 +638,11 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (use-package treemacs-nerd-icons
+    :after treemacs
+    :config
+    (treemacs-nerd-icons-mode 1))
+  ;; 关联文件图标识别
   (use-package all-the-icons-dired
     :ensure t
     :hook (dired-mode . all-the-icons-dired-mode))
@@ -651,7 +658,6 @@ before packages are loaded."
   ;; 4. 让 dired/ranger 更紧凑好看
   (setq dired-hide-details-mode t)  ;; 隐藏权限/时间，只留图标+名字
   (setq dired-column-width 20)
-  (setq lua-default-application "/usr/local/bin/lua")  ;; 👈 改成你自己的路径
   ;; 启动时自动应用透明度
   (set-frame-parameter (selected-frame) 'alpha
                        (cons dotspacemacs-active-transparency
