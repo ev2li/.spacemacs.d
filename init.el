@@ -95,6 +95,7 @@ This function should only modify configuration layer settings."
           osx-command-as 'super)
      (chinese :variables chinese-enable-youdao-dict t)
      ev2li
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -187,7 +188,7 @@ It should only modify the values of Spacemacs settings."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
 
    ;; Scale factor controls the scaling (size) of the startup banner. Default
    ;; value is `auto' for scaling the logo automatically to fit all buffer
@@ -249,8 +250,8 @@ It should only modify the values of Spacemacs settings."
    ;; package can be defined with `:package', or a theme can be defined with
    ;; `:location' to download the theme package, refer the themes section in
    ;; DOCUMENTATION.org for the full theme specifications.
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(gruvbox
+                         gruvbox)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -259,7 +260,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(all-the-icons :separator arrow :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -270,7 +271,7 @@ It should only modify the values of Spacemacs settings."
    ;; `fixed-pitch' faces. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("FiraCode Nerd Font"
                                :size 22.0
                                :weight normal
                                :width normal)
@@ -617,6 +618,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq warning-minimum-level :error)
   (setq evil-shift-round nil)
+
+  ;;(setq dotspacemacs-default-font '("FiraCode Nerd Font‌" :size 22.0 :weight normal :width normal))
+  ;; 2. 关闭 Spacemacs 自己的字体选择
+  ;; (setq dotspacemacs-enable-font-selection-on-startup nil)
+  ;; 3. 底层 Emacs 禁止字体对话框
+  ;; (setq inhibit-font-loading-dialogs t)
+  ;; (setq emacs-silent-font-load t)
+  ;; (setq frame-inhibit-implied-resize t)
+  ;; 4. 不要让它去读 X 资源（macOS 也会触发）
+  ;; (setq inhibit-x-resources t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -625,25 +636,41 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (use-package all-the-icons-dired
+    :ensure t
+    :hook (dired-mode . all-the-icons-dired-mode))
+
+  ;; 2. 图标大小微调（适配 FiraCode）
+  (setq all-the-icons-scale-factor 1.1)
+
+  ;; 3. ranger 显示图标+隐藏文件+预览
+  (setq ranger-show-hidden t)    ;; 显示 . 文件
+  (setq ranger-show-preview t)   ;; 右侧预览
+  (setq ranger-width-preview 0.55)
+
+  ;; 4. 让 dired/ranger 更紧凑好看
+  (setq dired-hide-details-mode t)  ;; 隐藏权限/时间，只留图标+名字
+  (setq dired-column-width 20)
+  (setq lua-default-application "/usr/local/bin/lua")  ;; 👈 改成你自己的路径
   ;; 启动时自动应用透明度
   (set-frame-parameter (selected-frame) 'alpha
                        (cons dotspacemacs-active-transparency
                              dotspacemacs-inactive-transparency))
   (setq rust-format-on-save t)
   ;;解决org表格里面中英文对齐的问题
-  (when (configuration-layer/layer-usedp 'chinese)
-    (when (and (spacemacs/system-is-mac) window-system)
-      (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
+  ;; (when (configuration-layer/layer-usedp 'chinese)
+  ;;   (when (and (spacemacs/system-is-mac) window-system)
+  ;;     (spacemacs//set-monospaced-font "FiraCode Nerd Font‌" "Hiragino Sans GB" 22 22)))
   (setq ispell-program-name "aspell")
   (setq ispell-dictionary "english")
   ;; Setting Chinese Font
-  (when (and (spacemacs/system-is-mswindows) window-system)
-    (setq w32-pass-alt-to-system nil)
-    (setq w32-apps-modifier 'super)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font)
-                        charset
-                        (font-spec :family "Microsoft Yahei" :size 14))))
+  ;; (when (and (spacemacs/system-is-mswindows) window-system)
+  ;;   (setq w32-pass-alt-to-system nil)
+  ;;   (setq w32-apps-modifier 'super)
+  ;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;;     (set-fontset-font (frame-parameter nil 'font)
+  ;;                       charset
+  ;;                       (font-spec :family "Microsoft Yahei" :size 22))))
   (spacemacs|add-company-backends :modes text-mode)
   ;; (global-hungry-delete-mode t)
   (spacemacs|diminish helm-gtags-mode)
