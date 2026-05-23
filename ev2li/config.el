@@ -32,3 +32,9 @@
 ;; 方法1：完全禁止显示警告信息（包括 minibuffer 提示）
 (setq warning-minimum-level :error)
 (setq inhibit-warning-messages t)
+
+
+;; 当 magit 加载完成后，执行以下配置
+(with-eval-after-load 'magit
+  (setq magit-no-confirm '(push pull))
+  )
