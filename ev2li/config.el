@@ -22,6 +22,7 @@
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 ;; (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
+;; recentf刷新时间
 (setq
  recentf-auto-cleanup 60
  recentf-max-saved-items 50
